@@ -1,5 +1,9 @@
 import openai
 
+"""
+METODOLOGIA _SEM NOME_ por André Luís Portela Neves
+"""
+
 openai.api_key = ''
 messages = []
 
@@ -14,15 +18,19 @@ def getResponse(msg):
 
 while True:
     # Conseguir INPUT
-    question = input(">>")
+    question = input(">> ")
 
     # Manipular o INPUT
     if question == "sair":
         break
     else:
         # Enviar Para o CHATGPT
-        messages.append({"role": "user", "content": str(question)})
+        messages.append({"role": "user", "content": question})
         answer = getResponse(messages)
         
         print("ChatGPT:", answer[0], "\nCusto:\n", answer[1])
-        messages.append({"role": "assistant", "content": answer[0]})
+        messages.append({"role": "assistant", "content": answer[0]}) # Salvar Resposta do ChatGPT para conseguir contexto
+
+log = open('log.txt', 'w')
+log.write(messages)
+log.close()
