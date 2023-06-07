@@ -31,6 +31,6 @@ while True:
         print("ChatGPT:", answer[0], "\nCusto:\n", answer[1])
         messages.append({"role": "assistant", "content": answer[0]}) # Salvar Resposta do ChatGPT para conseguir contexto
 
-log = open('log.txt', 'w')
-log.write(messages)
+log = open('log.txt', 'w', encoding='utf-8') # UTF-8
+log.write(str(messages).replace('\\n', '\n')) # \n
 log.close()
